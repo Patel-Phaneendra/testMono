@@ -15,17 +15,17 @@
 # [START cloudbuild_go_test_yaml]
 steps:
   # Run linters
-  - name: "golangci/golangci-lint"
-    args: ["golangci-lint","run"]
-    env: ['GOPATH=.']
+#  - name: "golangci/golangci-lint"
+#    args: ["golangci-lint","run"]
+#    env: ['GOPATH=.']
 
   # Run tests and save to file
-  - name: 'gcr.io/$PROJECT_ID/sonar-scanner:latest'
-    entrypoint: 'bash'
-    args: 
-    - '-c'
-    - 'sonar-scanner -Dsonar.host.url=http://34.93.206.118:9000 -Dsonar.projectKey=mb -Dsonar.sources=. -Dsonar.login=$$SONAR_USERNAME -Dsonar.password=$$SONAR_PASSWORD -Dsonar-scanner -Dsonar.qualitygate.wait=true'
-    secretEnv: ['SONAR_USERNAME','SONAR_PASSWORD']
+#  - name: 'gcr.io/$PROJECT_ID/sonar-scanner:latest'
+#    entrypoint: 'bash'
+#    args: 
+#    - '-c'
+#    - 'sonar-scanner -Dsonar.host.url=http://34.93.206.118:9000 -Dsonar.projectKey=mb -Dsonar.sources=. -Dsonar.login=$$SONAR_USERNAME -Dsonar.password=$$SONAR_PASSWORD -Dsonar-scanner -Dsonar.qualitygate.wait=true'
+#    secretEnv: ['SONAR_USERNAME','SONAR_PASSWORD']
 
   # [START cloudbuild_go_image_yaml]
   # Docker Build
@@ -43,16 +43,16 @@ steps:
 
   # [START cloudbuild_go_inspect_yaml]
   # Docker inspect to get image details  
-  - name: gcr.io/cloud-builders/docker
-    entrypoint: /bin/bash
-    args:
-    - -c
-    - |
-      docker image inspect asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA --format '{{index .RepoDigests 0}}' > image-digest.txt &&
-      cat image-digest.txt
-    waitFor: 
-    - push  
-    id: inspect
+#  - name: gcr.io/cloud-builders/docker
+#    entrypoint: /bin/bash
+#    args:
+#    - -c
+#    - |
+#      docker image inspect asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA --format '{{index .RepoDigests 0}}' > image-digest.txt &&
+#      cat image-digest.txt
+#    waitFor: 
+#    - push  
+#    id: inspect
   # [END cloudbuild_go_inspect_yaml]
  
  
@@ -73,9 +73,9 @@ images:
 options:
  logging: CLOUD_LOGGING_ONLY
 
-availableSecrets:
-  secretManager:
-  - versionName: projects/mb-poc-352009/secrets/sonar-username/versions/1
-    env: 'SONAR_USERNAME'
-  - versionName: projects/mb-poc-352009/secrets/sonar-pwd/versions/1
-    env: 'SONAR_PASSWORD'
+#availableSecrets:
+#  secretManager:
+#  - versionName: projects/mb-poc-352009/secrets/sonar-username/versions/1
+#    env: 'SONAR_USERNAME'
+#  - versionName: projects/mb-poc-352009/secrets/sonar-pwd/versions/1
+#    env: 'SONAR_PASSWORD'
