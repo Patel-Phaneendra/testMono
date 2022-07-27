@@ -23,14 +23,14 @@ steps:
       git fetch --depth=2 origin main
       echo hello
       git  log
-      git --no-pager diff --name-only HEAD^ HEAD | grep "/" | cut -d/ -f1 | sort | uniq > /workspace/main.go
+      git --no-pager diff --name-only HEAD^ HEAD | grep "/" | cut -d/ -f1 | sort | uniq > /workspace/diff.txt
 
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: /bin/bash
     args: 
     - -c
     - |
-       echo "Then we saved " $(cat /workspace/main.go)
+       echo "Then we saved " $(cat /workspace/diff.txt)
        while read line
        do 
        echo $line; 
@@ -42,7 +42,7 @@ steps:
         continue
        fi
        gcloud builds submit $line --config=${config}
-       done < /workspace/main.go
+       done < /workspace/diff.txt
 
 
 options:
