@@ -55,7 +55,7 @@ steps:
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:
     - run
-    - --filename=hello1.yaml
+    - --filename=hello-a.yaml
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage-a:$SHORT_SHA
     - --location=asia-south1
     - --cluster=hbl-poc-mb-rw-dm-cluster
