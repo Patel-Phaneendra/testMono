@@ -1,0 +1,31 @@
+# This Deployment manifest defines:
+# - single-replica deployment of the container image, with label "app: go-hello-world"
+# - Pod exposes port 8081
+# - specify PORT environment variable to the container process
+# Syntax reference https://kubernetes.io/docs/concepts/configuration/overview/
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-a
+  template:
+    metadata:
+      labels:
+        app: hello-a
+    spec:
+      containers:
+      - name: server
+        image: asia-south1-docker.pkg.dev/hbl-poc-digfac-anthos-prj/mb-devops/myimage-a
+        ports:
+        - containerPort: 8081
+        env:
+        - name: PORT
+          value: "8081"
+        readinessProbe:
+          tcpSocket:
+            port: 8081
+          initialDelaySeconds: 5
