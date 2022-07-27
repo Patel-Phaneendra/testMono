@@ -72,9 +72,9 @@ steps:
 # [END cloudbuild_go_logs_yaml]
 # Store images in Google Artifact Registry
 
-substitutions:
-    _SERVICE_URL: https://voucher-server-hobr26cxda-el.a.run.app/
-    _SERVICE_ACCOUNT: voucher-invoker@$PROJECT_ID.iam.gserviceaccount.com
+#substitutions:
+#    _SERVICE_URL: https://voucher-server-hobr26cxda-el.a.run.app/
+#    _SERVICE_ACCOUNT: voucher-invoker@$PROJECT_ID.iam.gserviceaccount.com
 
 # List built images in cloudbuild history
 images:
