@@ -30,7 +30,7 @@ steps:
     args: 
     - -c
     - |
-       echo "Then we saved " $(cat /workspace/main.go)
+       echo "Then we saved " $(cat /workspace)
        while read line
        do 
        echo $line; 
