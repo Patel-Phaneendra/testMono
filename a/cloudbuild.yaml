@@ -25,7 +25,6 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 
            'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA', '.']
-    dir: 'a' 
   # [END cloudbuild_go_image_yaml]
   
   # [START cloudbuild_go_push_yaml]
