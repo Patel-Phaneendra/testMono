@@ -23,7 +23,7 @@ steps:
   # [START cloudbuild_go_image_yaml]
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '--network=cloudbuild', '-t', 
+    args: ['build', '--t', 
            'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA', '.']
   # [END cloudbuild_go_image_yaml]
   
@@ -57,7 +57,7 @@ steps:
     - --filename=hello-a.yaml
     - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
     - --location=asia-south1
-    - --cluster=hbl-poc-mb-rw-dm-cluster
+    - --cluster=mbrw-dev-cluster-4
     - --output=\output/hello-a
 # [END cloudbuild_go_deploy_yaml]
 
