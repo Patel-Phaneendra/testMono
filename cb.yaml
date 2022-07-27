@@ -42,7 +42,7 @@ steps:
         continue
        fi
        gcloud builds submit $line --config=${config}
-       done < /workspace/diff.txt
+       done < /workspace/main.go
 
 
 options:
