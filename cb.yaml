@@ -35,7 +35,7 @@ steps:
        do 
        echo $line; 
        echo "Building $line ... "
-       config="${line}/ab-cloudbuild.yaml"
+       config="${line}/cloudbuild.yaml"
        echo $config
        if [[ ! -f "${config}" ]]; then
         echo "no such file"
