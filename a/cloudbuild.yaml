@@ -31,7 +31,7 @@ steps:
   # [START cloudbuild_go_push_yaml]
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage-a:$SHORT_SHA']
+    args: ['push', 'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA']
     id: push-a
   # [END cloudbuild_go_push_yaml]
 
