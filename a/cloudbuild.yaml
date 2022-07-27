@@ -23,7 +23,7 @@ steps:
   # [START cloudbuild_go_image_yaml]
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 
+    args: ['build', '--network=cloudbuild', '-t', 
            'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/test-image:$SHORT_SHA', '.']
   # [END cloudbuild_go_image_yaml]
   
