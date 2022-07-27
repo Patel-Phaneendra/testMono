@@ -1,3 +1,3 @@
-module github.com/patel-phaneendra/golang-sample1/hello1
+module github.com/patel-phaneendra/testMono/a
 
 go 1.15
