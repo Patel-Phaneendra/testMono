@@ -55,7 +55,19 @@
 #    id: inspect
   # [END cloudbuild_go_inspect_yaml]
  
- 
+
+# [START cloudbuild_go_deploy_yaml]
+# Deploy to GKE 
+  - name: "gcr.io/cloud-builders/gke-deploy"
+    args:
+    - run
+    - --filename=hello-a.yaml
+    - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage001:$SHORT_SHA
+    - --location=asia-south1
+    - --cluster=hbl-poc-mb-rw-dm-cluster
+    - --output=\output/hello1
+# [END cloudbuild_go_deploy_yaml] 
+
 
 # Deploy to Cloud Run
 #  - name: 'gcr.io/cloud-builders/gcloud'
@@ -64,18 +76,18 @@
 #          '--allow-unauthenticated',
 #          '--region', 'asia-south1', '--platform', 'managed']
 
-#substitutions:
-#    _SERVICE_URL: https://voucher-server-hobr26cxda-el.a.run.app/
-#    _SERVICE_ACCOUNT: voucher-invoker@$PROJECT_ID.iam.gserviceaccount.com
-#images:
-#  - asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
+substitutions:
+    _SERVICE_URL: https://voucher-server-hobr26cxda-el.a.run.app/
+    _SERVICE_ACCOUNT: voucher-invoker@$PROJECT_ID.iam.gserviceaccount.com
+images:
+  - asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
 
-#options:
-# logging: CLOUD_LOGGING_ONLY
+options:
+ logging: CLOUD_LOGGING_ONLY
 
-#availableSecrets:
-#  secretManager:
-#  - versionName: projects/mb-poc-352009/secrets/sonar-username/versions/1
-#    env: 'SONAR_USERNAME'
-#  - versionName: projects/mb-poc-352009/secrets/sonar-pwd/versions/1
-#    env: 'SONAR_PASSWORD'
+availableSecrets:
+  secretManager:
+  - versionName: projects/mb-poc-352009/secrets/sonar-username/versions/1
+    env: 'SONAR_USERNAME'
+  - versionName: projects/mb-poc-352009/secrets/sonar-pwd/versions/1
+    env: 'SONAR_PASSWORD'
