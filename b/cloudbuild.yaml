@@ -4,6 +4,7 @@ steps:
   args:
   - run
   - --filename=deployment.yaml
+  - --image=asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA
   - --location=asia-south1
   - --cluster=mbrw-dev-cluster-4
   dir: 'b'
