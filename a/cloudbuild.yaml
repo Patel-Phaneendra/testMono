@@ -22,17 +22,17 @@ steps:
 
   # [START cloudbuild_go_image_yaml]
   # Docker Build
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 
-           'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA', '.']
-    dir: 'a'
+#  - name: 'gcr.io/cloud-builders/docker'
+#    args: ['build', '-t', 
+#           'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA', '.']
+#    dir: 'a'
   # [END cloudbuild_go_image_yaml]
   
   # [START cloudbuild_go_push_yaml]
   # Docker push to Google Artifact Registry
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA']
-    id: push-a
+#  - name: 'gcr.io/cloud-builders/docker'
+#    args: ['push', 'asia-south1-docker.pkg.dev/$PROJECT_ID/mb-devops/myimage:$SHORT_SHA']
+#    id: push-a
   # [END cloudbuild_go_push_yaml]
 
   # [START cloudbuild_go_inspect_yaml]
