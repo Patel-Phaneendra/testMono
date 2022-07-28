@@ -18,7 +18,7 @@ steps:
 - name: "gcr.io/cloud-builders/gke-deploy"
   args:
   - run
-  - --filename=/manifests/deployment.yaml
+  - --filename=deployment.yaml
   - --location=asia-south1
   - --cluster=mbrw-dev-cluster-4
   dir: 'a'
